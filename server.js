@@ -8,6 +8,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "dist")));
+
 const REGION = process.env.AWS_REGION || "us-east-2";
 
 const jwks = createRemoteJWKSet(
@@ -122,6 +125,10 @@ app.post("/api/presign-upload", async (req, res) => {
   } catch (e) {
     return res.status(500).json({ error: e.message || String(e) });
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 const port = process.env.PORT || 3001;
