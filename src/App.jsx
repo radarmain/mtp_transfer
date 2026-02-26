@@ -8,24 +8,34 @@ function Home() {
   const isLoggedIn = !!localStorage.getItem("id_token");
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>MTP File Transfer</h1>
+    <div className="page">
+      <h1 className="page__title">MTP File Transfer</h1>
 
       {isLoggedIn ? (
-        <div>
-          <a href="/upload">Go to Upload</a>
-          <button
-            onClick={() => {
-              localStorage.removeItem("id_token");
-              localStorage.removeItem("access_token");
-              window.location.href = "/";
-            }}
-          >
-            Log out
-          </button>
+        <div className="card">
+          <div className="btn-group">
+            <a href="/upload" className="link">Go to Upload →</a>
+            <button
+              className="btn btn--secondary"
+              onClick={() => {
+                localStorage.removeItem("id_token");
+                localStorage.removeItem("access_token");
+                window.location.href = "/";
+              }}
+            >
+              Log out
+            </button>
+          </div>
         </div>
       ) : (
-        <button onClick={redirectToCognitoLogin}>Log In</button>
+        <div className="card">
+          <p className="card__subtitle">
+            Sign in to upload files.
+          </p>
+          <button className="btn btn--primary" onClick={redirectToCognitoLogin}>
+            Log In
+          </button>
+        </div>
       )}
     </div>
   );

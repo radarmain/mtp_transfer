@@ -33,9 +33,11 @@ export default function Callback() {
   }, [code]);
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Callback</h1>
-      <p>{status}</p>
+    <div className="page">
+      <h1 className="page__title">Callback</h1>
+      <p className={`status ${status.includes("success") ? "status--success" : status.includes("failed") ? "status--error" : ""}`}>
+        {status}
+      </p>
     </div>
   );
 }

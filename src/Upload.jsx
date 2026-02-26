@@ -48,15 +48,29 @@ export default function Upload() {
   }
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Upload</h1>
+    <div className="page">
+      <h1 className="page__title">Upload</h1>
 
-      <form onSubmit={onUpload}>
-        <input name="file" type="file" />
-        <button type="submit">Upload</button>
+      <form onSubmit={onUpload} className="upload-form">
+        <div className="form-group">
+          <label className="form-label" htmlFor="file">Choose a file</label>
+          <input
+            id="file"
+            name="file"
+            type="file"
+            className="file-input"
+          />
+        </div>
+        <button type="submit" className="btn btn--primary">
+          Upload
+        </button>
       </form>
 
-      <p>{status}</p>
+      {status && (
+        <p className={`status ${status.includes("Uploaded") ? "status--success" : status.includes("failed") ? "status--error" : ""}`}>
+          {status}
+        </p>
+      )}
     </div>
   );
 }
