@@ -6,7 +6,11 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://transfer.meet-the-people.com"],
+  })
+);
 
 const path = require("path");
 app.use(express.static(path.join(__dirname, "dist")));
