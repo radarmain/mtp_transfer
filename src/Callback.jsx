@@ -16,7 +16,7 @@ export default function Callback() {
     }
 
     (async () => {
-      const resp = await fetch("http://localhost:3001/api/exchange", {
+      const resp = await fetch("/api/exchange", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code }),

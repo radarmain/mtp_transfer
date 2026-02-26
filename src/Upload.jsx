@@ -15,7 +15,7 @@ export default function Upload() {
 
     setStatus("Requesting upload URL...");
 
-    const presignResp = await fetch("http://localhost:3001/api/presign-upload", {
+    const presignResp = await fetch("/api/presign-upload", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
